@@ -69,7 +69,7 @@ class Dashboard extends Component {
   }
 
   deleteProduct = (id) => {
-    axios.post('http://localhost:2000/delete-product', {
+    axios.post('https://backend-b1vr.onrender.com/delete-product', {
       id: id
     }, {
       headers: {
