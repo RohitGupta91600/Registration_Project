@@ -6,13 +6,24 @@ var cors = require('cors');
 var multer = require('multer'),
   bodyParser = require('body-parser'),
   path = require('path');
-var mongoose = require("mongoose");
-mongoose.connect("mongodb://localhost:27017/Resgistration", { useUnifiedTopology: true } );
+// var mongoose = require("mongoose");
+// mongoose.connect("mongodb://localhost:27017/Resgistration", { useUnifiedTopology: true } );
 var fs = require('fs');
 var product = require("./model/product.js");
 var user = require("./model/user.js");
 
 var dir = './uploads';
+const { MongoClient } = require('mongodb');
+
+const uri = 'mongodb://localhost:27017/Registration';
+MongoClient.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(client => {
+    console.log('Connected to MongoDB');
+  })
+  .catch(err => {
+    console.error('Error connecting to MongoDB:', err);
+  });
+
 var upload = multer({
   storage: multer.diskStorage({
 
