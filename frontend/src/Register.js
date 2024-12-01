@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import swal from "sweetalert";
 import { Button, TextField, Link } from "@material-ui/core";
 import { withRouter } from "./utils";
-const axios = require("axios");
+import axios from 'axios';
+
 
 class Register extends React.Component {
   constructor(props) {
@@ -18,24 +19,17 @@ class Register extends React.Component {
 
   register = () => {
 
-    axios.post('https://backend-b1vr.onrender.com/register', {
-      username: this.state.username,
-      password: this.state.password,
-    }).then((res) => {
-      swal({
-        text: res.data.title,
-        icon: "success",
-        type: "success"
-      });
-      // this.props.history.push('/');
-      this.props.navigate("/");
-    }).catch((err) => {
-      swal({
-        text: err.response.data.errorMessage,
-        icon: "error",
-        type: "error"
-      });
-    });
+    axios.post('http://example.com/api/register', {
+  username: 'example',
+  password: 'password123',
+})
+  .then(response => {
+    console.log('Registration successful:', response.data);
+  })
+  .catch(error => {
+    console.error('Error during registration:', error);
+  });
+
   }
 
   render() {
